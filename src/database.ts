@@ -21,10 +21,10 @@ export let database: {
 
 export async function connectToMongoDB() {
     try {
-        const dbClient = await MongoClient.connect(MONGODB_URI, {
-            useNewUrlParser: true,
-        });
-        // const dbClient = await MongoClient.connect(MONGODB_URI);
+        // const dbClient = await MongoClient.connect(MONGODB_URI, {
+        //     useNewUrlParser: true,
+        // });
+        const dbClient = await MongoClient.connect(MONGODB_URI);
         console.log("Successfully connected to server " + MONGODB_URI);
         database = {
             dbClient,
@@ -42,5 +42,5 @@ export async function connectToMongoDB() {
 }
 
 export async function createCollection(collection, data: IInitCollection[]) {
-    await collection.insert(data);
+    await collection.insertMany(data);
 }

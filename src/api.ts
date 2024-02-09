@@ -14,7 +14,8 @@ app.get("/prices", async (req, res) => {
     try {
         const dbHandle = database.dbHandle;
         const collection = dbHandle.collection("prices");
-        return await collection.find({});
+        const result = await collection.find({});
+        res.send(result);
     } catch (error) {
         throw new Error(error);
     }
